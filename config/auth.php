@@ -94,6 +94,17 @@ return [
             'throttle' => 60,
         ],
     ],
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'user',
+            'hash' => false,
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

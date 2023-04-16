@@ -16,14 +16,19 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        //DB::table('users')->insert([
         DB::table('users')->insert([
-            'name'=> "muzair",
-            'phone'=> "23423423",
-            'email'=> "muzair",
-            'city'=> "muzair",
-            'password'=> Hash::make('123'),
+            'first_name'=> "uzair2",
+            'last_name'=> "uzair2",
+            'email'=> "uzair2",
+            'phone'=> "222",
+            'password'=> Hash::make('555'),
         ]);
-        
+        DB::table('users')->insert([
+            'first_name'=> "uzair3",
+            'last_name'=> "uzair3",
+            'email'=> "uzair3",
+            'phone'=> "333",
+            'password'=> Hash::make('333'),
+        ]);
     }
 }

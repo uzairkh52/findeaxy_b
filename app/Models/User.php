@@ -7,10 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model {
-    use HasFactory, HasApiTokens;
-    public $timestamps = false;
-    // const UPDATED_AT = 'updated_date';
-    // const CREATED_AT = 'creation_date';
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+    protected $guarded = [];
+    
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'phone',
+        'email',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    
+  
 }
