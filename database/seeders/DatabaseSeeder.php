@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             [
                 CategorySeeder::class,
                 UsersSeeder::class,
-                ProductSeeder::class
+                ProductSeeder::class,
+                BikeMakeSeeder::class
             ]
         );
     }

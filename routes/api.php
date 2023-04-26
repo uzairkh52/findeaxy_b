@@ -5,6 +5,7 @@ use App\Http\Controllers\contactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DummyapiController;
+use App\Http\Controllers\ModelListTable;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\personalresorceController;
 use App\Http\Controllers\ProductController;
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get("/auth/users/{id?}", [AuthController::class, "userDetailClass"]);
     Route::get("/my-product", [ProductController::class, 'MyProductClass']);
     Route::DELETE("/my-product/delete/{id?}", [ProductController::class, "DeleteMyProductClass"]);
+    Route::put("/my-product/update/{id?}", [ProductController::class, "UpdateMyProductClass"]);
     Route::get('/getuser', [AuthController::class, 'getuserClass']);
     Route::put('/users/update/{id}', [AuthController::class, "editUser"]);
 });
@@ -64,14 +66,32 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 
 
-Route::POST("/product/add", [ProductController::class, "AddProductClass"]);
-Route::get("/product/list/{slug?}", [ProductController::class, "ShowProductList"]);
 
 // car model api
-Route::get("/car-make", [ProductController::class, "CarMakeClass"]);
-Route::get("/car-model/{carmake}", [ProductController::class, "CarModelClass"]);
-Route::get("/car-year/{carmake}/{carmodel}", [ProductController::class, "CarYearClass"]);
+Route::POST("/product/car/add", [ProductController::class, "AddCarClass"]);
+Route::get("/product/list/{slug?}", [ProductController::class, "ShowCarProductList"]);
+Route::get("/car-make", [ModelListTable::class, "CarMakeClass"]);
+Route::get("/car-model/{carmake}", [ModelListTable::class, "CarModelClass"]);
+Route::get("/car-year/{carmake}/{carmodel}", [ModelListTable::class, "CarYearClass"]);
 
-Route::get("/car-models", [ProductController::class, "carmodelsClass"]);
-Route::get("/pk-cities", [ProductController::class, "PkCitiesClass"]);
+
+Route::get("/pk-cities", [ModelListTable::class, "PkCitiesClass"]);
 Route::POST("/getimage", [ProductController::class, "getimageClass"]);
+
+// bike
+Route::POST("/product/bike/add", [ProductController::class, "AddBikeClass"]);
+Route::get("/list/bike-make", [ModelListTable::class, "BikeModelClass"]);
+Route::get("/product/bike/{slug?}", [ProductController::class, "ShowBikeProducClass"]);
+
+// mobile rout
+
+Route::POST("/product/mobile/add", [ProductController::class, "AddMobileClass"]);
+Route::get("/list/mobile", [ModelListTable::class, "BikeModelClass"]);
+Route::get("/mobile-brand", [ModelListTable::class, "MobileBrandClass"]);
+Route::get("/product/mobile/{slug?}", [ProductController::class, "ShowMobileProducClass"]);
+
+// laptop
+Route::POST("/product/laptop/add", [ProductController::class, "AddLaptopClass"]);
+Route::get("/list/laptop", [ModelListTable::class, "BikeModelClass"]);
+Route::get("/laptop-brand", [ModelListTable::class, "LaptopBrandClass"]);
+Route::get("/product/laptop/{slug?}", [ProductController::class, "ShowLaptopProducClass"]);
