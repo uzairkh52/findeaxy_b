@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,6 +82,17 @@ class AuthController extends Controller
     //     ]);
         
     // }
+    function getusersClass () { 
+        $data = User::all();
+        return UserResource::collection($data);
+    }
+    function usersClass(){
+        $data = Auth::user();
+
+        return new UserResource($data);
+
+    }
+    
     function getuserClass (Request $request) {
         // $userPersonalDetail = [
         //     'first_name' => Auth::user(),
@@ -92,6 +104,12 @@ class AuthController extends Controller
             'user' => $data,
             // 'data' => array($user_personalDetail)
         ], 200);
+
+        // resource coll
+        // $user = User::get();
+        // $data =  Auth::user();
+        // $userResource = new UserResource($user);
+        // return UserResource::collection($userResource);;
 
         // $user = User::findOrFail(Auth::user()->id);
         // if (is_null($user)) {

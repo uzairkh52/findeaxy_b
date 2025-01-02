@@ -5,11 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Myproduct extends Model
+class MyProduct extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'user_id', 'type', 'qty', 'price','created_at', 'updated_at',
-    ];
-    
+    protected $fillable = ['user_id','my_product_name','my_product_type','my_product_type_id','my_product_id'];
+
+    // Polymorphic relationships with specific product types
+    public function myproductable()
+    {
+        return $this->morphTo();
+    }
+
 }

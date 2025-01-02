@@ -10,7 +10,7 @@ class Mobile extends Model
 {
     use HasFactory;
     use Sluggable;
-    protected $guarded = [];
+    protected $guarded;
     
     public function sluggable(): array
     {
@@ -35,5 +35,7 @@ class Mobile extends Model
         'location',
     ];
     
-
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

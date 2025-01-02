@@ -9,29 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Laptop extends Model
 {
     use HasFactory;
-    use Sluggable;
-    protected $guarded = [];
-    
-    public function sluggable(): array
+
+    public function myproduct()
     {
-        return [
-            'slug' => [
-                'source' => ['title', 'laptop_brand', 'condition', 'id']
-            ]
-        ];
+        return $this->morphOne(Product::class, 'myproductable');
     }
-    protected $fillable = [
-        'id',
-        'created_at',
-        'updated_at',
-        'category_id',
-        'user_id',
-        'title',
-        'description',
-        'laptop_brand',
-        'condition',
-        'price',
-        'laptop_images',
-        'location',
-    ];
 }

@@ -15,6 +15,7 @@ class CreateBikeYearsTable extends Migration
     {
         Schema::create('bike_years', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->string("year");
         });
     }

@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
                 CategorySeeder::class,
                 UsersSeeder::class,
                 ProductSeeder::class,
-                BikeMakeSeeder::class
+                BikeMakeSeeder::class,
+                bike_yearSeeder::class,
+                mobileBrandSeeder::class
             ]
         );
     }

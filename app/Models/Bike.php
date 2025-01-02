@@ -35,5 +35,12 @@ class Bike extends Model
         'bike_images',
         'location',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     
+    public function cr(){
+        return $this->hasMany(Car::class);
+    }
 }

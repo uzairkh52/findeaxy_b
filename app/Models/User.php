@@ -16,6 +16,7 @@ class User extends Authenticatable
     protected $guarded = [];
     
     protected $fillable = [
+        'user_id',
         'first_name',
         'last_name',
         'phone',
@@ -27,6 +28,18 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-    
+ 
+    public function Car() { 
+        return $this->hasMany(Car::class); 
+    }
+    public function Bike(){
+        return $this->hasMany(Bike::class);
+    }   
+    public function Laptop(){
+        return $this->hasMany(Laptop::class);
+    }
+    public function Mobile(){
+        return $this->hasMany(Mobile::class);
+    }
   
 }

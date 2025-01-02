@@ -47,15 +47,18 @@ Route::DELETE("/contact/{id}", [contactController::class, "Contact_apiDelete"]);
 //     //All secure URL's
 //     // my product 
 // });
+
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
-
 Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get("/auth/users/{id?}", [AuthController::class, "userDetailClass"]);
-    Route::get("/my-product", [ProductController::class, 'MyProductClass']);
     Route::DELETE("/my-product/delete/{id?}", [ProductController::class, "DeleteMyProductClass"]);
     Route::put("/my-product/update/{id?}", [ProductController::class, "UpdateMyProductClass"]);
+    Route::get("/my-product", [ProductController::class, 'MyProductClass']);
     Route::get('/getuser', [AuthController::class, 'getuserClass']);
+
+    Route::get('/user', [AuthController::class, 'usersClass']);
+    Route::get('/getusers', [AuthController::class, 'getusersClass']);
     Route::put('/users/update/{id}', [AuthController::class, "editUser"]);
 });
 
@@ -69,7 +72,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 // car model api
 Route::POST("/product/car/add", [ProductController::class, "AddCarClass"]);
-Route::get("/product/list/{slug?}", [ProductController::class, "ShowCarProductList"]);
+Route::get("/car/list/{slug?}", [ProductController::class, "ShowCarProductList"]);
 Route::get("/car-make", [ModelListTable::class, "CarMakeClass"]);
 Route::get("/car-model/{carmake}", [ModelListTable::class, "CarModelClass"]);
 Route::get("/car-year/{carmake}/{carmodel}", [ModelListTable::class, "CarYearClass"]);
